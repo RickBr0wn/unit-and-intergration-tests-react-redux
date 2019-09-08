@@ -1,15 +1,33 @@
 import React from 'react'
 import { configure, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { findByTestAttr, CONSTANTS } from '../../utils'
+import { CONSTANTS, checkProps, findByTestAttr } from '../../utils'
 
-import Headline from './'
+import Headline from './Headline'
 
 configure({ adapter: new Adapter() })
 
 const setUp = (props = {}) => shallow(<Headline {...props} />)
 
 describe('<Headline />', () => {
+  describe('Checking PropTypes', () => {
+    it('should not thrown a warning', () => {
+      const expectedProps = {
+        header: CONSTANTS.TEST_STR,
+        desc: CONSTANTS.TEST_STR
+        /**
+          arrayOfMulitpleTypes: [{
+            key: CONSTANTS.TEST_STR,
+            key: CONSTANTS.TEST_STR,
+          }]
+        */
+      }
+
+      // eslint-disable-next-line react/forbid-foreign-prop-types
+      expect(checkProps(Headline.propTypes, expectedProps)).toBeUndefined()
+    })
+  })
+
   describe('WITH props', () => {
     let component
     beforeEach(() => {
@@ -46,5 +64,3 @@ describe('<Headline />', () => {
     })
   })
 })
-
-// @56min
