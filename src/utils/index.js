@@ -14,3 +14,7 @@ export const CONSTANTS = {
   TEST_OBJ: {},
   TEST_FUNC: () => {}
 }
+
+export const TYPES = {
+  GET_POSTS: 'GET_POSTS'
+}
