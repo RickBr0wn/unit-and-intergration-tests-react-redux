@@ -1,6 +1,6 @@
 import { configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { CONSTANTS, TYPES } from '../utils'
+import { CONSTANTS, TYPES } from '../../utils'
 
 import reducer from './reducer'
 

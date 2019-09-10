@@ -1,4 +1,7 @@
 import checkPropTypes from 'check-prop-types'
+import { createStore, applyMiddleware } from 'react'
+import rootReducer from '../reducers'
+import { middlewares } from '../createStore'
 
 export const checkProps = (component, expectedProps) =>
   // eslint-disable-next-line react/forbid-foreign-prop-types
@@ -17,4 +20,11 @@ export const CONSTANTS = {
 
 export const TYPES = {
   GET_POSTS: 'GET_POSTS'
+}
+
+export const testStore = initialState => {
+  const createStoreWithMiddlewares = applyMiddleware(...middlewares)(
+    createStore
+  )
+  return createStoreWithMiddlewares(rootReducer, initialState)
 }

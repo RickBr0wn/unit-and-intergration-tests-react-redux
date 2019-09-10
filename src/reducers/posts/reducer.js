@@ -1,9 +1,10 @@
-import { TYPES } from '../utils'
+import { TYPES } from '../../utils'
 
 export default (state = [], { type, payload }) => {
+  console.log(TYPES)
   switch (type) {
     case TYPES.GET_POSTS:
-      return Object.assign([], state, payload)
+      return payload
     default:
       return state
   }
